@@ -1,0 +1,6 @@
+/* V6.1 QC refinements: preserve V5 visual language while fixing interaction/layout regressions. */
+.credit-strip{color:#4f5752}
+.credit-strip strong{color:#70462f}
+.reading-layout{align-items:start}
+.context-pane{height:680px;min-height:680px;align-self:start}
+@media(max-width:950px){.context-pane{height:520px;min-height:520px}}
