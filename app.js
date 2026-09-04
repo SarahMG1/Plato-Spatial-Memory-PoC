@@ -21,9 +21,9 @@ function openTab(name,updateHash=true){
   tabButtons.forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
   document.documentElement.scrollTop=0; document.body.scrollTop=0;
   if(updateHash) history.replaceState(null,'','#'+name);
-  const names={scene:'Home',text:'Text',spatial:'Spatial Analysis',archaeology:'Archaeology',memory:'Social Memory',interpretation:'What This Tells Us',references:'References'};
+  const names={scene:'Home',text:'Text',spatial:'Spatial Analysis',reconstruction:'Reconstruction',archaeology:'Archaeology',memory:'Social Memory',interpretation:'What This Tells Us',references:'References'};
   const kicker=document.querySelector('#tabKicker'); if(kicker) kicker.textContent=names[name]||name;
 }
 tabButtons.forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.tab)));
 const initial=location.hash.replace('#','');
-if(['scene','text','spatial','archaeology','memory','interpretation','references'].includes(initial)) openTab(initial,false);
+if(['scene','text','spatial','reconstruction','archaeology','memory','interpretation','references'].includes(initial)) openTab(initial,false);
