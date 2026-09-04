@@ -87,14 +87,34 @@ function initGISControls(){
 const hs={
   stoa:{x:1115,y:315,title:'Stoa Basileios',p:'Explicit in Euthyphro 2a and archaeologically identified. Architectural appearance is reconstructed.',tags:['Explicit','Attested']},
   herms:{x:1550,y:465,title:'Herms',p:'Herm bases and a wider concentration are independently attested around the northwest Agora.',tags:['Implicit','Materially attested']},
-  route:{x:1740,y:565,title:'Panathenaic approach',p:'The processional route entered the Agora beside the Royal Stoa; experienced appearance is reconstructed.',tags:['Implicit','Topography']},
+  route:{x:1740,y:565,title:'Panathenaic approach',p:'The processional route entered the Agora beside the Royal Stoa. The displayed surface is a visual reconstruction of a travelled, unmodernised approach rather than a claim to an exact paving treatment.',tags:['Implicit','Topography','Surface reconstructed']},
   zeus:{x:400,y:410,title:'Stoa of Zeus Eleutherios',p:'Immediately adjacent to the Royal Stoa and part of the recoverable built environment.',tags:['Implicit','Attested']},
   shrine:{x:1950,y:515,title:'Classical shrine & offerings',p:'Excavated religious material east of the Royal Stoa provides an important implicit-context test case.',tags:['Implicit','Materially attested']},
   river:{x:470,y:620,title:'Eridanos channel',p:'The Classical channel is archaeologically recoverable; its sensory prominence to an individual remains unknown.',tags:['Implicit','Reconstructed course']}
 };
+function selectHotspot(id){
+  const d=hs[id],card=document.querySelector('#reconCard'); if(!d||!card) return;
+  document.querySelectorAll('[data-hotspot]').forEach(b=>b.classList.toggle('selected',b.dataset.hotspot===id));
+  card.innerHTML=`<div class="eyebrow">Selected evidence</div><h3>${d.title}</h3><p>${d.p}</p><div class="evidence-tags">${d.tags.map(t=>`<span>${t}</span>`).join('')}</div><small>The visual reconstruction is evidence-aware and deliberately distinct from certainty.</small>`;
+}
 function initReconstruction(){
   const pano=document.querySelector('#panorama'),layer=document.querySelector('#hotspotLayer'); if(!pano||!layer) return;
-  if(!layer.dataset.ready){Object.entries(hs).forEach(([id,d],i)=>[0,2600].forEach(off=>{const b=document.createElement('button');b.type='button';b.className='hotspot '+(id==='stoa'?'':'implicit')+((id==='zeus'||id==='river')?' uncertain':'');b.dataset.hotspot=id;b.textContent=String(i+1);b.style.left=(d.x+off)+'px';b.style.top=d.y+'px';layer.appendChild(b);}));layer.dataset.ready='1';}
+  if(!layer.dataset.ready){
+    Object.entries(hs).forEach(([id,d],i)=>[0,2600].forEach(off=>{
+      const b=document.createElement('button');
+      b.type='button';
+      b.className='hotspot '+(id==='stoa'?'':'implicit')+((id==='zeus'||id==='river')?' uncertain':'');
+      b.dataset.hotspot=id;
+      b.setAttribute('aria-label',`${i+1}: ${d.title}`);
+      b.textContent=String(i+1);
+      b.style.left=(d.x+off)+'px';
+      b.style.top=d.y+'px';
+      b.addEventListener('pointerdown',e=>e.stopPropagation());
+      b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();selectHotspot(id);});
+      layer.appendChild(b);
+    }));
+    layer.dataset.ready='1';
+  }
   let down=false,startX=0,startScroll=0;const one=2600;const centreView=()=>{pano.scrollLeft=1120;};
   pano.addEventListener('scroll',()=>{if(pano.scrollLeft<20)pano.scrollLeft+=one;else if(pano.scrollLeft>one+20)pano.scrollLeft-=one;},{passive:true});
   pano.addEventListener('pointerdown',e=>{if(e.target.closest('button,input,label,a,[data-hotspot]'))return;down=true;startX=e.clientX;startScroll=pano.scrollLeft;if(pano.setPointerCapture)pano.setPointerCapture(e.pointerId);pano.classList.add('dragging');});
@@ -103,7 +123,6 @@ function initReconstruction(){
   document.querySelector('#centreView')?.addEventListener('click',centreView);
   document.querySelector('#implicitToggle')?.addEventListener('change',e=>pano.classList.toggle('hide-implicit',!e.target.checked));
   document.querySelector('#uncertaintyToggle')?.addEventListener('change',e=>pano.classList.toggle('show-uncertainty',e.target.checked));
-  layer.addEventListener('click',e=>{const b=e.target.closest('[data-hotspot]');if(!b)return;const d=hs[b.dataset.hotspot],card=document.querySelector('#reconCard');if(!d||!card)return;card.innerHTML=`<div class="eyebrow">Selected evidence</div><h3>${d.title}</h3><p>${d.p}</p><div class="evidence-tags">${d.tags.map(t=>`<span>${t}</span>`).join('')}</div><small>The visual reconstruction is evidence-aware and deliberately distinct from certainty.</small>`;});
   setTimeout(centreView,80);
 }
 
