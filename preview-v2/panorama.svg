@@ -1,60 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 760" width="2600" height="760">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 720" width="2600" height="720">
 <defs>
- <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#789ba6"/><stop offset=".55" stop-color="#c8c6ae"/><stop offset="1" stop-color="#e3cda4"/></linearGradient>
- <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bca47d"/><stop offset="1" stop-color="#8f795b"/></linearGradient>
- <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4d5b5"/><stop offset=".6" stop-color="#c9b38d"/><stop offset="1" stop-color="#aa9069"/></linearGradient>
- <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a85f45"/><stop offset="1" stop-color="#794536"/></linearGradient>
- <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7ea6b4"/><stop offset=".52" stop-color="#c8c5aa"/><stop offset="1" stop-color="#ead5ad"/></linearGradient>
+ <linearGradient id="earth" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfa77d"/><stop offset="1" stop-color="#856f51"/></linearGradient>
+ <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#eadbbd"/><stop offset=".55" stop-color="#ceb892"/><stop offset="1" stop-color="#9f8661"/></linearGradient>
+ <linearGradient id="plaster" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9c6a0"/><stop offset="1" stop-color="#ad9570"/></linearGradient>
+ <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b46849"/><stop offset="1" stop-color="#734333"/></linearGradient>
+ <pattern id="dust" width="42" height="42" patternUnits="userSpaceOnUse"><circle cx="8" cy="12" r="1.2" fill="#564634" opacity=".22"/><circle cx="28" cy="28" r="1.6" fill="#e0c99d" opacity=".26"/><path d="M2 38 L18 35" stroke="#6d5a43" stroke-width="1" opacity=".18"/></pattern>
+ <pattern id="roofTiles" width="22" height="14" patternUnits="userSpaceOnUse"><path d="M0 14 Q11 2 22 14" fill="none" stroke="#633d31" stroke-width="1.5" opacity=".45"/></pattern>
+ <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#3f3025" flood-opacity=".28"/></filter>
 </defs>
-<rect width="2600" height="470" fill="url(#sky)"/>
-<path d="M0 370 C180 300 330 330 470 285 C660 220 815 320 990 260 C1170 195 1320 320 1470 255 C1650 190 1815 300 1990 248 C2180 190 2350 290 2600 225 L2600 500 L0 500 Z" fill="#7e846d" opacity=".52"/>
-<path d="M0 415 C260 375 450 405 690 360 C980 305 1160 410 1450 350 C1740 295 1940 400 2210 342 C2360 312 2480 330 2600 315 L2600 520 L0 520 Z" fill="#999379" opacity=".65"/>
-<rect y="455" width="2600" height="305" fill="url(#ground)"/>
-<path d="M0 610 C430 570 810 575 1180 603 C1580 634 2020 612 2600 560" fill="none" stroke="#d7c29a" stroke-width="125" opacity=".42"/>
-<path d="M0 603 C430 565 810 572 1180 600 C1580 630 2020 608 2600 555" fill="none" stroke="#8c7554" stroke-width="3" opacity=".45"/>
-<!-- Stoa Basileios -->
-<g transform="translate(770 330)">
- <polygon points="0,95 80,20 620,20 700,95" fill="url(#roof)" stroke="#5d4536" stroke-width="5"/>
- <rect x="25" y="95" width="650" height="38" fill="#8d684b"/>
- <rect x="45" y="133" width="610" height="238" fill="#bfa77f" opacity=".25"/>
- <g fill="url(#stone)" stroke="#7f6a50" stroke-width="2">
-  <rect x="72" y="128" width="30" height="230"/><rect x="142" y="128" width="30" height="230"/><rect x="212" y="128" width="30" height="230"/><rect x="282" y="128" width="30" height="230"/><rect x="352" y="128" width="30" height="230"/><rect x="422" y="128" width="30" height="230"/><rect x="492" y="128" width="30" height="230"/><rect x="562" y="128" width="30" height="230"/>
- </g>
- <rect x="45" y="356" width="610" height="25" fill="#9a825f"/>
- <text x="350" y="410" text-anchor="middle" font-family="Georgia,serif" font-size="23" fill="#382f28">Stoa Basileios</text>
+<rect width="2600" height="455" fill="url(#sky)"/>
+<circle cx="2190" cy="100" r="46" fill="#f2d49d" opacity=".66"/>
+<!-- distant Attic terrain -->
+<path d="M0 350 C180 285 320 330 470 275 C650 210 790 315 970 250 C1140 188 1320 305 1475 240 C1660 178 1815 282 1995 232 C2190 176 2370 268 2600 205 L2600 470 L0 470 Z" fill="#78816d" opacity=".50"/>
+<path d="M0 395 C250 352 455 395 690 343 C950 290 1190 392 1450 330 C1750 270 1970 386 2220 322 C2380 280 2490 305 2600 294 L2600 482 L0 482 Z" fill="#9a9173" opacity=".68"/>
+<!-- distant acropolis-like rise, deliberately atmospheric -->
+<g opacity=".48" transform="translate(2160 232)"><path d="M0 105 L105 50 L230 56 L300 104 Z" fill="#857b66"/><rect x="117" y="25" width="75" height="31" fill="#b5a583"/><rect x="128" y="10" width="52" height="18" fill="#c5b794"/></g>
+<!-- ground and travelled approach -->
+<rect y="445" width="2600" height="275" fill="url(#earth)"/>
+<rect y="445" width="2600" height="275" fill="url(#dust)"/>
+<path d="M2600 505 C2240 520 2050 555 1810 585 C1480 625 1110 620 760 590 C455 563 245 548 0 568 L0 720 L2600 720 Z" fill="#cdb285" opacity=".44"/>
+<path d="M2600 516 C2220 535 2015 568 1780 598 C1455 638 1115 634 760 604 C455 577 235 560 0 580" fill="none" stroke="#735f47" stroke-width="3" opacity=".38"/>
+<path d="M2600 552 C2205 562 2010 594 1790 622 C1450 660 1110 654 760 625" fill="none" stroke="#6f5b43" stroke-width="2" opacity=".22" stroke-dasharray="35 24"/>
+<!-- stone drainage/edge -->
+<path d="M30 650 C270 620 470 620 690 650" fill="none" stroke="#8b7558" stroke-width="25" opacity=".9"/>
+<path d="M30 644 C270 614 470 614 690 644" fill="none" stroke="#c7b38e" stroke-width="7"/>
+<!-- Eridanos channel -->
+<path d="M65 676 C305 638 510 646 760 692" fill="none" stroke="#536f77" stroke-width="26" opacity=".9"/>
+<path d="M65 670 C305 634 510 641 760 686" fill="none" stroke="#9db2b4" stroke-width="5" opacity=".8"/>
+<!-- Stoa of Zeus Eleutherios -->
+<g transform="translate(65 330)" filter="url(#shadow)">
+ <polygon points="0,82 58,28 520,28 578,82" fill="url(#roof)" stroke="#5e4032" stroke-width="4"/>
+ <polygon points="0,82 578,82 551,96 25,96" fill="#76523f"/>
+ <rect x="24" y="96" width="530" height="30" fill="#8f6b4f"/>
+ <rect x="35" y="126" width="508" height="178" fill="#5e5143" opacity=".25"/>
+ <g fill="url(#stone)" stroke="#79664f" stroke-width="2"><rect x="55" y="122" width="27" height="184"/><rect x="116" y="122" width="27" height="184"/><rect x="177" y="122" width="27" height="184"/><rect x="238" y="122" width="27" height="184"/><rect x="299" y="122" width="27" height="184"/><rect x="360" y="122" width="27" height="184"/><rect x="421" y="122" width="27" height="184"/><rect x="482" y="122" width="27" height="184"/></g>
+ <rect x="32" y="301" width="516" height="24" fill="#9b835f"/>
+ <rect x="0" y="28" width="578" height="55" fill="url(#roofTiles)" opacity=".55"/>
+ <text x="290" y="350" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#3b3027">Stoa of Zeus Eleutherios</text>
 </g>
-<!-- Stoa Zeus -->
-<g transform="translate(70 355) scale(.9)">
- <polygon points="0,78 55,25 515,25 570,78" fill="#8c5a45" stroke="#5a4032" stroke-width="4"/>
- <rect x="20" y="78" width="530" height="30" fill="#88694f"/>
- <g fill="url(#stone)" stroke="#79664f" stroke-width="2">
-  <rect x="50" y="106" width="24" height="180"/><rect x="108" y="106" width="24" height="180"/><rect x="166" y="106" width="24" height="180"/><rect x="224" y="106" width="24" height="180"/><rect x="282" y="106" width="24" height="180"/><rect x="340" y="106" width="24" height="180"/><rect x="398" y="106" width="24" height="180"/><rect x="456" y="106" width="24" height="180"/>
- </g>
- <text x="285" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#382f28">Stoa of Zeus Eleutherios</text>
+<!-- Royal Stoa -->
+<g transform="translate(760 292)" filter="url(#shadow)">
+ <polygon points="0,102 88,20 620,20 712,102" fill="url(#roof)" stroke="#5f4335" stroke-width="5"/>
+ <polygon points="88,20 620,20 654,51 54,51" fill="url(#roofTiles)" opacity=".8"/>
+ <rect x="28" y="100" width="658" height="34" fill="#8c684d"/>
+ <rect x="48" y="134" width="620" height="216" fill="url(#plaster)" opacity=".28"/>
+ <g fill="url(#stone)" stroke="#806b50" stroke-width="2"><rect x="75" y="130" width="31" height="218"/><rect x="150" y="130" width="31" height="218"/><rect x="225" y="130" width="31" height="218"/><rect x="300" y="130" width="31" height="218"/><rect x="375" y="130" width="31" height="218"/><rect x="450" y="130" width="31" height="218"/><rect x="525" y="130" width="31" height="218"/><rect x="600" y="130" width="31" height="218"/></g>
+ <rect x="47" y="346" width="622" height="28" fill="#9d8460"/>
+ <path d="M52 342 L664 342" stroke="#e6d7b9" stroke-width="4" opacity=".5"/>
+ <text x="356" y="408" text-anchor="middle" font-family="Georgia,serif" font-size="24" fill="#382e26">Stoa Basileios</text>
 </g>
-<!-- painted/urban edge -->
-<g transform="translate(1760 340)">
- <polygon points="0,80 90,18 570,18 650,80" fill="#9d6347" stroke="#5d4334" stroke-width="4"/>
- <rect x="35" y="80" width="580" height="35" fill="#82654c"/>
- <g fill="url(#stone)" opacity=".95"><rect x="65" y="112" width="26" height="205"/><rect x="130" y="112" width="26" height="205"/><rect x="195" y="112" width="26" height="205"/><rect x="260" y="112" width="26" height="205"/><rect x="325" y="112" width="26" height="205"/><rect x="390" y="112" width="26" height="205"/><rect x="455" y="112" width="26" height="205"/><rect x="520" y="112" width="26" height="205"/></g>
+<!-- market/civic edge beyond -->
+<g transform="translate(1780 332)" filter="url(#shadow)">
+ <polygon points="0,86 76,25 590,25 666,86" fill="#9e6246" stroke="#5e4334" stroke-width="4"/>
+ <rect x="30" y="86" width="605" height="34" fill="#826149"/>
+ <g fill="url(#stone)"><rect x="65" y="116" width="26" height="188"/><rect x="132" y="116" width="26" height="188"/><rect x="199" y="116" width="26" height="188"/><rect x="266" y="116" width="26" height="188"/><rect x="333" y="116" width="26" height="188"/><rect x="400" y="116" width="26" height="188"/><rect x="467" y="116" width="26" height="188"/><rect x="534" y="116" width="26" height="188"/></g>
+ <rect x="0" y="25" width="666" height="61" fill="url(#roofTiles)" opacity=".5"/>
 </g>
-<!-- Herms -->
-<g stroke="#5f5040" stroke-width="3" fill="#b9a07b">
- <g transform="translate(1510 470)"><rect x="0" y="58" width="28" height="105"/><rect x="-8" y="160" width="44" height="13"/><circle cx="14" cy="40" r="24"/><path d="M4 38 l10 12 11-12" fill="none"/></g>
- <g transform="translate(1600 490) scale(.82)"><rect x="0" y="58" width="28" height="105"/><rect x="-8" y="160" width="44" height="13"/><circle cx="14" cy="40" r="24"/></g>
- <g transform="translate(1695 475) scale(.92)"><rect x="0" y="58" width="28" height="105"/><rect x="-8" y="160" width="44" height="13"/><circle cx="14" cy="40" r="24"/></g>
+<!-- herms: denser and less schematic -->
+<g stroke="#5f5040" stroke-width="2.6" fill="#bca27b">
+ <g transform="translate(1490 448)"><rect x="0" y="50" width="30" height="118" rx="2"/><rect x="-10" y="165" width="50" height="14"/><circle cx="15" cy="33" r="25"/><path d="M4 32 Q15 43 26 32" fill="none"/><rect x="5" y="94" width="20" height="10" fill="#8d7355"/></g>
+ <g transform="translate(1578 468) scale(.82)"><rect x="0" y="50" width="30" height="118"/><rect x="-10" y="165" width="50" height="14"/><circle cx="15" cy="33" r="25"/></g>
+ <g transform="translate(1662 449) scale(.92)"><rect x="0" y="50" width="30" height="118"/><rect x="-10" y="165" width="50" height="14"/><circle cx="15" cy="33" r="25"/></g>
+ <g transform="translate(1730 490) scale(.66)"><rect x="0" y="50" width="30" height="118"/><rect x="-10" y="165" width="50" height="14"/><circle cx="15" cy="33" r="25"/></g>
 </g>
-<!-- shrine -->
-<g transform="translate(1880 505)"><rect x="0" y="45" width="150" height="72" fill="#b9a17c" stroke="#6c5a45" stroke-width="3"/><polygon points="-15,45 75,5 165,45" fill="#956249" stroke="#5d4435" stroke-width="3"/><rect x="64" y="67" width="24" height="50" fill="#6c5946"/></g>
-<!-- Eridanos -->
-<path d="M80 690 C420 640 620 666 920 720" fill="none" stroke="#5d7f88" stroke-width="22" opacity=".7"/><path d="M80 684 C420 636 620 660 920 714" fill="none" stroke="#9eb7b9" stroke-width="5" opacity=".72"/>
-<!-- people -->
-<g fill="#4d4034">
- <g transform="translate(1410 565)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
- <g transform="translate(1480 575) scale(.84)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
- <g transform="translate(2150 590) scale(.72)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
- <g transform="translate(2260 565) scale(.8)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
+<!-- small shrine and votive clutter -->
+<g transform="translate(1880 478)" filter="url(#shadow)"><rect x="0" y="48" width="155" height="78" fill="#bca37e" stroke="#6d5b46" stroke-width="3"/><polygon points="-16,48 77,4 171,48" fill="#956048" stroke="#5e4435" stroke-width="3"/><rect x="65" y="74" width="26" height="52" fill="#6b5946"/><circle cx="190" cy="104" r="10" fill="#8b6549"/><circle cx="218" cy="112" r="7" fill="#9c7455"/><rect x="235" y="91" width="16" height="28" fill="#a88b65"/></g>
+<!-- low walls / boundary stones -->
+<g fill="#b59b74" stroke="#77634b" stroke-width="2" opacity=".95"><rect x="2055" y="572" width="170" height="28"/><rect x="2265" y="548" width="132" height="30"/><rect x="1240" y="588" width="88" height="22"/></g>
+<!-- olive tree -->
+<g transform="translate(2360 385)"><path d="M0 165 C22 120 18 80 35 42" stroke="#66523d" stroke-width="15" fill="none"/><path d="M20 75 C-40 20 -84 48 -100 75 C-45 84 -12 80 20 75" fill="#737b59"/><path d="M28 62 C62 5 120 18 142 58 C98 72 68 74 28 62" fill="#7d8461"/><path d="M18 112 C-32 88 -72 110 -80 140 C-28 146 5 136 18 112" fill="#6f7857"/></g>
+<!-- people, garments, baskets -->
+<g>
+ <g transform="translate(1405 548)" fill="#493b31"><circle cx="0" cy="0" r="12"/><path d="M-13 18 Q0 5 14 18 L22 92 L-23 92 Z" fill="#8a6c55"/><path d="M-4 20 L-18 75" stroke="#d5b98d" stroke-width="5"/></g>
+ <g transform="translate(1462 566) scale(.83)"><circle cx="0" cy="0" r="12" fill="#493b31"/><path d="M-14 17 Q0 5 14 17 L21 91 L-21 91 Z" fill="#6b7564"/></g>
+ <g transform="translate(2060 575) scale(.72)"><circle cx="0" cy="0" r="12" fill="#493b31"/><path d="M-14 17 Q0 5 14 17 L21 91 L-21 91 Z" fill="#795d48"/></g>
+ <g transform="translate(2185 552) scale(.8)"><circle cx="0" cy="0" r="12" fill="#493b31"/><path d="M-14 17 Q0 5 14 17 L21 91 L-21 91 Z" fill="#8a7d5f"/></g>
+ <ellipse cx="2115" cy="657" rx="22" ry="8" fill="#755d46"/><path d="M2098 652 Q2115 628 2132 652" fill="none" stroke="#987558" stroke-width="4"/>
 </g>
-<!-- foreground texture -->
-<g fill="#695a49" opacity=".24"><circle cx="330" cy="700" r="6"/><circle cx="540" cy="650" r="5"/><circle cx="1160" cy="710" r="8"/><circle cx="1340" cy="670" r="5"/><circle cx="2010" cy="700" r="7"/><circle cx="2390" cy="640" r="5"/></g>
+<!-- stones, wheel ruts, debris -->
+<g fill="#665542" opacity=".28"><circle cx="350" cy="690" r="5"/><circle cx="540" cy="655" r="4"/><circle cx="920" cy="684" r="6"/><circle cx="1185" cy="702" r="8"/><circle cx="1325" cy="664" r="5"/><circle cx="2020" cy="688" r="6"/><circle cx="2440" cy="650" r="5"/></g>
+<g stroke="#665441" stroke-width="2" opacity=".24"><path d="M920 630 l80 8"/><path d="M1110 650 l95 4"/><path d="M1830 640 l88 -6"/><path d="M2300 625 l110 -8"/></g>
 </svg>
