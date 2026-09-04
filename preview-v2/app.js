@@ -26,54 +26,66 @@ const features=[
   {id:'encounter',name:'Socrates & Euthyphro encounter zone',lat:37.97610,lng:23.72243,layer:'people',status:'explicit',evidence:'Interpretative point',summary:'Approximate analytical anchor for the dramatic encounter.',confidence:'Vicinity only.'}
 ];
 
-let map=null,osm=null,historicGround=null,historicShapes=[],displayLayers=[],radiusCircle=null,currentMode='modern',currentStatus='all';
+let map=null,osm=null,ancientOverlay=null,displayLayers=[],radiusCircle=null,currentMode='modern',currentStatus='all';
 const centre=[37.97610,23.72243];
+const ancientBounds=[[37.97275,23.72015],[37.97755,23.72525]];
 
 function openTab(name){
   document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
   document.querySelectorAll('[data-panel]').forEach(p=>p.classList.toggle('active',p.dataset.panel===name));
-  if(name==='spatial') setTimeout(()=>{initMap(); if(map) map.invalidateSize();},60);
+  if(name==='spatial') setTimeout(()=>{initMap();if(map)map.invalidateSize();},60);
 }
 function initTabs(){document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.tab)));}
 
-function getSection(sec){try{return (typeof sectionData!=='undefined' && sectionData[sec]) ? sectionData[sec] : null;}catch(_){return null;}}
+function getSection(sec){try{return (typeof sectionData!=='undefined'&&sectionData[sec])?sectionData[sec]:null;}catch(_){return null;}}
 function updateText(sec){
-  const d=getSection(sec); if(!d) return;
+  const d=getSection(sec);if(!d)return;
   document.querySelectorAll('.steph button').forEach(x=>x.classList.toggle('active',x.dataset.sec===sec));
   const greek=document.querySelector('#greek'),title=document.querySelector('#explicitTitle'),body=document.querySelector('#explicitBody'),list=document.querySelector('#implicitList');
-  if(greek) greek.textContent=d.g; if(title) title.textContent=d.t; if(body) body.textContent=d.b;
-  if(list) list.innerHTML=(implicitBySection[sec]||[]).map(x=>`<article class="implicit-item"><span class="pill">${x.status}</span><strong>${x.title}</strong><span>${x.text}</span></article>`).join('');
+  if(greek)greek.textContent=d.g;if(title)title.textContent=d.t;if(body)body.textContent=d.b;
+  if(list)list.innerHTML=(implicitBySection[sec]||[]).map(x=>`<article class="implicit-item"><span class="pill">${x.status}</span><strong>${x.title}</strong><span>${x.text}</span></article>`).join('');
 }
 function initText(){document.querySelectorAll('.steph button').forEach(b=>b.addEventListener('click',()=>updateText(b.dataset.sec)));updateText('2a');}
 
 function showFeature(f){
-  const el=document.querySelector('#featureRecord'); if(!el) return;
+  const el=document.querySelector('#featureRecord');if(!el)return;
   el.innerHTML=`<div class="eyebrow">Feature record · ${f.evidence}</div><h3>${f.name}</h3><p>${f.summary}</p><dl><dt>Textual status</dt><dd>${f.status==='explicit'?'Explicit':'Implicit / external evidence'}</dd><dt>Spatial confidence</dt><dd>${f.confidence}</dd></dl>`;
 }
 function initMap(){
-  if(map || !window.L || !document.querySelector('#geoMap')) return;
-  map=L.map('geoMap',{minZoom:17,maxZoom:21}).setView(centre,19);
+  if(map||!window.L||!document.querySelector('#geoMap'))return;
+  map=L.map('geoMap',{minZoom:15,maxZoom:21,zoomSnap:.25}).setView(centre,19);
+  map.createPane('ancientBase');
+  map.getPane('ancientBase').style.zIndex=220;
+  map.getPane('ancientBase').style.pointerEvents='none';
   osm=L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:21,attribution:'© OpenStreetMap contributors'}).addTo(map);
-  historicGround=L.rectangle([[37.97555,23.72170],[37.97672,23.72315]],{stroke:false,fillColor:'#e6d8ba',fillOpacity:.92});
-  historicShapes=[
-    L.polygon([[37.97623,23.72218],[37.97623,23.72244],[37.97605,23.72244],[37.97605,23.72218]],{color:'#6b4a37',weight:2,fillColor:'#b86e50',fillOpacity:.72}),
-    L.polygon([[37.97598,23.72199],[37.97598,23.72228],[37.97578,23.72228],[37.97578,23.72199]],{color:'#6d5b43',weight:2,fillColor:'#c6b088',fillOpacity:.7}),
-    L.polyline([[37.97666,23.72292],[37.97640,23.72270],[37.97614,23.72247],[37.97576,23.72230]],{color:'#9c7b4d',weight:16,opacity:.34}),
-    L.polyline([[37.97664,23.72216],[37.97643,23.72225],[37.97621,23.72231],[37.97598,23.72234]],{color:'#557982',weight:6,opacity:.7,dashArray:'10 5'}),
-    L.polygon([[37.97638,23.72228],[37.97640,23.72274],[37.97618,23.72278],[37.97613,23.72235]],{color:'#466c73',weight:1,dashArray:'5 5',fillColor:'#466c73',fillOpacity:.1})
-  ];
-  features.forEach(f=>{const c=f.status==='explicit'?'#a95437':f.layer==='material'?'#467079':'#69745d';const m=L.circleMarker([f.lat,f.lng],{radius:f.id==='encounter'?9:7,color:'#f7efe2',weight:2,fillColor:c,fillOpacity:1});m._f=f;m.bindTooltip(f.name);m.on('click',()=>showFeature(f));displayLayers.push(m);});
-  applyFilters(); applyMapMode();
+  ancientOverlay=L.imageOverlay('ancient-agora-map.svg?v=1',ancientBounds,{opacity:1,interactive:false,pane:'ancientBase'});
+  features.forEach(f=>{
+    const c=f.status==='explicit'?'#a95437':f.layer==='material'?'#467079':'#69745d';
+    const m=L.circleMarker([f.lat,f.lng],{radius:f.id==='encounter'?9:7,color:'#f7efe2',weight:2,fillColor:c,fillOpacity:1});
+    m._f=f;m.bindTooltip(f.name);m.on('click',()=>showFeature(f));displayLayers.push(m);
+  });
+  applyFilters();applyMapMode();
 }
 function applyMapMode(){
-  if(!map) return;
-  [osm,historicGround,...historicShapes].forEach(l=>{if(l && map.hasLayer(l)) map.removeLayer(l);});
-  if(currentMode==='modern'||currentMode==='overlay'){osm.addTo(map);osm.setOpacity(currentMode==='overlay'?0.42:1);}
-  if(currentMode==='historic'||currentMode==='overlay'){historicGround.addTo(map);historicGround.bringToBack();historicShapes.forEach(l=>l.addTo(map));}
-  displayLayers.forEach(l=>{if(map.hasLayer(l) && l.bringToFront) l.bringToFront();});
+  if(!map)return;
+  [osm,ancientOverlay].forEach(l=>{if(l&&map.hasLayer(l))map.removeLayer(l);});
+  if(currentMode==='modern'){
+    osm.setOpacity(1).addTo(map);
+    map.setView(centre,19,{animate:false});
+  }
+  if(currentMode==='historic'){
+    ancientOverlay.setOpacity(1).addTo(map);
+    map.fitBounds(ancientBounds,{padding:[18,18],animate:false});
+  }
+  if(currentMode==='overlay'){
+    osm.setOpacity(1).addTo(map);
+    ancientOverlay.setOpacity(.54).addTo(map);
+    map.fitBounds(ancientBounds,{padding:[18,18],animate:false});
+  }
+  displayLayers.forEach(l=>{if(map.hasLayer(l)&&l.bringToFront)l.bringToFront();});
 }
 function applyFilters(){
-  if(!map) return;
+  if(!map)return;
   const enabled=new Set([...document.querySelectorAll('[data-layer]:checked')].map(x=>x.dataset.layer));
   displayLayers.forEach(m=>{const f=m._f,show=enabled.has(f.layer)&&(currentStatus==='all'||f.status===currentStatus);if(show&&!map.hasLayer(m))m.addTo(map);if(!show&&map.hasLayer(m))map.removeLayer(m);});
 }
@@ -93,25 +105,15 @@ const hs={
   river:{x:470,y:620,title:'Eridanos channel',p:'The Classical channel is archaeologically recoverable; its sensory prominence to an individual remains unknown.',tags:['Implicit','Reconstructed course']}
 };
 function selectHotspot(id){
-  const d=hs[id],card=document.querySelector('#reconCard'); if(!d||!card) return;
+  const d=hs[id],card=document.querySelector('#reconCard');if(!d||!card)return;
   document.querySelectorAll('[data-hotspot]').forEach(b=>b.classList.toggle('selected',b.dataset.hotspot===id));
   card.innerHTML=`<div class="eyebrow">Selected evidence</div><h3>${d.title}</h3><p>${d.p}</p><div class="evidence-tags">${d.tags.map(t=>`<span>${t}</span>`).join('')}</div><small>The visual reconstruction is evidence-aware and deliberately distinct from certainty.</small>`;
 }
 function initReconstruction(){
-  const pano=document.querySelector('#panorama'),layer=document.querySelector('#hotspotLayer'); if(!pano||!layer) return;
+  const pano=document.querySelector('#panorama'),layer=document.querySelector('#hotspotLayer');if(!pano||!layer)return;
   if(!layer.dataset.ready){
     Object.entries(hs).forEach(([id,d],i)=>[0,2600].forEach(off=>{
-      const b=document.createElement('button');
-      b.type='button';
-      b.className='hotspot '+(id==='stoa'?'':'implicit')+((id==='zeus'||id==='river')?' uncertain':'');
-      b.dataset.hotspot=id;
-      b.setAttribute('aria-label',`${i+1}: ${d.title}`);
-      b.textContent=String(i+1);
-      b.style.left=(d.x+off)+'px';
-      b.style.top=d.y+'px';
-      b.addEventListener('pointerdown',e=>e.stopPropagation());
-      b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();selectHotspot(id);});
-      layer.appendChild(b);
+      const b=document.createElement('button');b.type='button';b.className='hotspot '+(id==='stoa'?'':'implicit')+((id==='zeus'||id==='river')?' uncertain':'');b.dataset.hotspot=id;b.setAttribute('aria-label',`${i+1}: ${d.title}`);b.textContent=String(i+1);b.style.left=(d.x+off)+'px';b.style.top=d.y+'px';b.addEventListener('pointerdown',e=>e.stopPropagation());b.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();selectHotspot(id);});layer.appendChild(b);
     }));
     layer.dataset.ready='1';
   }
