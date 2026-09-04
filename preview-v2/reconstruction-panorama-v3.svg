@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 900" role="img" aria-labelledby="title desc">
+<title id="title">Northwest Athenian Agora archaeological reconstruction</title>
+<desc id="desc">Illustrative evidence-aware reconstruction of the Stoa Basileios vicinity, showing the travelled approach, neighbouring stoas, herms, drainage, civic activity and the wider Attic landscape.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7fa8bb"/><stop offset=".52" stop-color="#bcd0ce"/><stop offset="1" stop-color="#ead2aa"/></linearGradient>
+  <linearGradient id="dust" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cbb58b"/><stop offset="1" stop-color="#8d7656"/></linearGradient>
+  <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8dcc5"/><stop offset=".5" stop-color="#c7b28f"/><stop offset="1" stop-color="#9a815e"/></linearGradient>
+  <linearGradient id="plaster" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e6d6b8"/><stop offset="1" stop-color="#b7a07c"/></linearGradient>
+  <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bb704e"/><stop offset="1" stop-color="#704332"/></linearGradient>
+  <linearGradient id="shadow" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#28342f" stop-opacity=".65"/><stop offset="1" stop-color="#28342f" stop-opacity="0"/></linearGradient>
+  <filter id="groundNoise" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".025" numOctaves="3" seed="8" result="n"/><feColorMatrix in="n" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 .18 0"/><feBlend in="SourceGraphic" mode="multiply"/></filter>
+  <filter id="softShadow"><feGaussianBlur stdDeviation="8"/></filter>
+  <pattern id="tiles" width="24" height="14" patternUnits="userSpaceOnUse"><rect width="24" height="14" fill="#a65f45"/><path d="M0 7h24M12 0v7M0 7v7M24 7v7" stroke="#6e4334" stroke-width="1" opacity=".55"/></pattern>
+  <pattern id="masonry" width="48" height="28" patternUnits="userSpaceOnUse"><rect width="48" height="28" fill="#b69e78"/><path d="M0 14h48M24 0v14M12 14v14M42 14v14" stroke="#8b7456" stroke-width="1" opacity=".35"/></pattern>
+</defs>
+<!-- atmosphere -->
+<rect width="2400" height="900" fill="url(#sky)"/>
+<circle cx="1960" cy="130" r="75" fill="#fff1c7" opacity=".55"/>
+<path d="M0 392 C220 312 430 338 620 278 C820 218 970 335 1160 264 C1370 190 1540 305 1735 240 C1940 174 2130 260 2400 190 L2400 510 L0 510 Z" fill="#6e806f" opacity=".42"/>
+<path d="M0 430 C260 382 450 406 690 360 C960 310 1160 402 1435 340 C1700 284 1900 365 2160 320 C2260 302 2340 302 2400 300 L2400 520 L0 520 Z" fill="#8e8c71" opacity=".48"/>
+<!-- distant Acropolis / urban silhouette -->
+<g opacity=".62" transform="translate(1740 255)"><path d="M0 155 Q180 20 360 150" fill="#706d59"/><rect x="138" y="68" width="150" height="55" fill="#c7b995"/><rect x="151" y="45" width="124" height="27" fill="#d8c9a7"/><g fill="#b9a783"><rect x="160" y="74" width="10" height="43"/><rect x="184" y="74" width="10" height="43"/><rect x="208" y="74" width="10" height="43"/><rect x="232" y="74" width="10" height="43"/><rect x="256" y="74" width="10" height="43"/></g></g>
+<!-- ground -->
+<path d="M0 480 L2400 448 L2400 900 L0 900 Z" fill="url(#dust)" filter="url(#groundNoise)"/>
+<!-- travelled approach -->
+<path d="M0 900 C370 770 690 735 1000 720 C1360 704 1680 670 2400 520 L2400 760 C1730 820 1340 860 1000 870 C620 880 330 892 0 900 Z" fill="#cbb188" opacity=".72"/>
+<path d="M0 856 C420 758 720 754 1050 748 C1450 740 1770 680 2400 560" fill="none" stroke="#795f45" stroke-width="5" opacity=".38"/>
+<path d="M160 850 C520 790 810 785 1160 776" fill="none" stroke="#8b6d4f" stroke-width="11" opacity=".25" stroke-linecap="round"/>
+<!-- drainage / Eridanos edge -->
+<g><path d="M0 774 C260 728 440 733 690 770" fill="none" stroke="#66563f" stroke-width="42"/><path d="M0 772 C260 728 440 733 690 768" fill="none" stroke="#8e7b5d" stroke-width="30"/><path d="M0 769 C260 728 440 733 690 765" fill="none" stroke="#617f82" stroke-width="10" opacity=".75"/><path d="M50 738l35 43m95-61l35 44m95-47l35 45m98-31l35 43m93-17l36 43" stroke="#4e4638" stroke-width="4" opacity=".7"/></g>
+<!-- left Stoa Zeus -->
+<g transform="translate(-70 330)"><polygon points="0,180 110,68 625,68 720,180" fill="url(#tiles)" stroke="#5e4032" stroke-width="6"/><rect x="48" y="180" width="624" height="48" fill="#8f6a4f"/><rect x="55" y="228" width="610" height="260" fill="#443c31" opacity=".72"/><g fill="url(#stone)" stroke="#78644d" stroke-width="3"><rect x="95" y="218" width="33" height="300" rx="4"/><rect x="170" y="218" width="33" height="300" rx="4"/><rect x="245" y="218" width="33" height="300" rx="4"/><rect x="320" y="218" width="33" height="300" rx="4"/><rect x="395" y="218" width="33" height="300" rx="4"/><rect x="470" y="218" width="33" height="300" rx="4"/><rect x="545" y="218" width="33" height="300" rx="4"/></g><path d="M78 520h560" stroke="#8e785c" stroke-width="22"/></g>
+<!-- central Stoa Basileios, human eye scale -->
+<g transform="translate(720 278)"><polygon points="0,192 100,66 670,66 770,192" fill="url(#tiles)" stroke="#5d4032" stroke-width="7"/><polygon points="100,66 670,66 627,28 143,28" fill="#7d4a38" opacity=".92"/><rect x="42" y="192" width="686" height="54" fill="#917058"/><rect x="58" y="246" width="650" height="298" fill="url(#plaster)" opacity=".34"/><rect x="78" y="272" width="610" height="244" fill="#3a332b" opacity=".58"/><g fill="url(#stone)" stroke="#7b674f" stroke-width="3"><rect x="92" y="236" width="38" height="330" rx="4"/><rect x="171" y="236" width="38" height="330" rx="4"/><rect x="250" y="236" width="38" height="330" rx="4"/><rect x="329" y="236" width="38" height="330" rx="4"/><rect x="408" y="236" width="38" height="330" rx="4"/><rect x="487" y="236" width="38" height="330" rx="4"/><rect x="566" y="236" width="38" height="330" rx="4"/><rect x="645" y="236" width="38" height="330" rx="4"/></g><rect x="65" y="552" width="635" height="30" fill="#8b7557"/><path d="M92 236h591" stroke="#d9c9a9" stroke-width="16" opacity=".75"/></g>
+<!-- right colonnade / civic edge -->
+<g transform="translate(1580 350)"><polygon points="0,145 85,55 600,55 675,145" fill="url(#tiles)" stroke="#5e4032" stroke-width="6"/><rect x="30" y="145" width="620" height="43" fill="#8b674d"/><rect x="44" y="188" width="590" height="240" fill="#473d31" opacity=".65"/><g fill="url(#stone)" stroke="#755f49" stroke-width="3"><rect x="70" y="180" width="30" height="280"/><rect x="140" y="180" width="30" height="280"/><rect x="210" y="180" width="30" height="280"/><rect x="280" y="180" width="30" height="280"/><rect x="350" y="180" width="30" height="280"/><rect x="420" y="180" width="30" height="280"/><rect x="490" y="180" width="30" height="280"/><rect x="560" y="180" width="30" height="280"/></g></g>
+<!-- herms with more sculptural depth -->
+<g stroke="#625344" stroke-width="3"><g transform="translate(1425 550)"><ellipse cx="20" cy="156" rx="34" ry="10" fill="#4f4336" opacity=".35"/><rect x="5" y="54" width="31" height="102" fill="url(#stone)"/><rect x="-5" y="150" width="52" height="13" fill="#a58d69"/><path d="M2 47 Q20 18 38 47 L34 65 H6Z" fill="#bca47e"/><circle cx="20" cy="35" r="20" fill="#bba37d"/><path d="M9 40q11 9 22 0M12 30h5m7 0h5" fill="none"/></g><g transform="translate(1510 575) scale(.82)"><ellipse cx="20" cy="156" rx="34" ry="10" fill="#4f4336" opacity=".35"/><rect x="5" y="54" width="31" height="102" fill="url(#stone)"/><rect x="-5" y="150" width="52" height="13" fill="#a58d69"/><circle cx="20" cy="35" r="20" fill="#bba37d"/></g><g transform="translate(1600 560) scale(.9)"><ellipse cx="20" cy="156" rx="34" ry="10" fill="#4f4336" opacity=".35"/><rect x="5" y="54" width="31" height="102" fill="url(#stone)"/><rect x="-5" y="150" width="52" height="13" fill="#a58d69"/><circle cx="20" cy="35" r="20" fill="#bba37d"/></g></g>
+<!-- shrine / votive cluster -->
+<g transform="translate(1760 590)"><rect x="0" y="55" width="150" height="92" fill="url(#masonry)" stroke="#64513f" stroke-width="4"/><polygon points="-18,56 75,4 168,56" fill="#935942" stroke="#5c4032" stroke-width="4"/><rect x="63" y="82" width="27" height="65" fill="#5c4c3d"/><g fill="#c1a77d"><circle cx="-35" cy="105" r="9"/><rect x="-39" y="113" width="8" height="30"/><circle cx="188" cy="117" r="8"/><rect x="184" y="125" width="8" height="28"/></g></g>
+<!-- trees / scrub -->
+<g fill="#586d50" opacity=".88"><circle cx="2160" cy="505" r="72"/><circle cx="2220" cy="470" r="54"/><circle cx="2305" cy="520" r="82"/><circle cx="655" cy="520" r="42"/><circle cx="605" cy="535" r="34"/></g><g stroke="#594934" stroke-width="12"><path d="M2190 565l-20-140"/><path d="M2300 585l5-160"/><path d="M630 570l5-85"/></g>
+<!-- market/civic clutter -->
+<g transform="translate(1920 665)"><path d="M0 32h240l-34 95H28Z" fill="#8a674b"/><path d="M0 32l40-56h190l10 56" fill="#a06449"/><g fill="#c68a59"><ellipse cx="65" cy="55" rx="12" ry="20"/><ellipse cx="95" cy="55" rx="12" ry="20"/><ellipse cx="126" cy="55" rx="12" ry="20"/></g></g>
+<!-- people -->
+<g stroke="#41362d" stroke-width="2"><g transform="translate(1160 620)"><ellipse cx="0" cy="122" rx="30" ry="8" fill="#554737" opacity=".3"/><circle cx="0" cy="0" r="14" fill="#9b775c"/><path d="M-15 17 Q0 7 15 17 L30 110 L-30 110Z" fill="#785347"/><path d="M-7 26L-26 73M8 27l34 40"/></g><g transform="translate(1240 644) scale(.82)"><circle cx="0" cy="0" r="14" fill="#8f6f56"/><path d="M-15 17 Q0 7 15 17 L30 110 L-30 110Z" fill="#d0c1a0"/><path d="M-7 26L-26 73M8 27l34 40"/></g><g transform="translate(500 665) scale(.9)"><circle cx="0" cy="0" r="14" fill="#8c694f"/><path d="M-15 17 Q0 7 15 17 L30 110 L-30 110Z" fill="#5b5f4a"/></g><g transform="translate(2025 640) scale(.76)"><circle cx="0" cy="0" r="14" fill="#9e7758"/><path d="M-15 17 Q0 7 15 17 L30 110 L-30 110Z" fill="#8b5140"/></g></g>
+<!-- donkey/cart hint -->
+<g transform="translate(300 676)" fill="#76614d" stroke="#514334" stroke-width="4"><ellipse cx="75" cy="38" rx="58" ry="31"/><circle cx="128" cy="22" r="19"/><path d="M132 5l14-28M119 7l-2-28M35 55v72M75 56v72M110 55v72M145 50v74"/><rect x="33" y="-3" width="64" height="40" fill="#9b7654"/></g>
+<!-- foreground stones, pottery, shadows -->
+<ellipse cx="1060" cy="822" rx="320" ry="28" fill="#4c4034" opacity=".13" filter="url(#softShadow)"/>
+<g fill="#6e5b47" opacity=".52"><ellipse cx="100" cy="842" rx="19" ry="8"/><ellipse cx="860" cy="820" rx="14" ry="6"/><ellipse cx="1340" cy="850" rx="22" ry="9"/><ellipse cx="2190" cy="835" rx="18" ry="7"/></g>
+<g transform="translate(1680 795)"><ellipse cx="0" cy="30" rx="18" ry="8" fill="#8c573c"/><path d="M-13 5Q0-12 13 5L10 28H-10Z" fill="#a76547"/><path d="M13 8q24 4 15 22" fill="none" stroke="#8b573d" stroke-width="5"/></g>
+<!-- atmospheric foreground light -->
+<rect width="2400" height="900" fill="url(#shadow)" opacity=".06"/>
+</svg>
