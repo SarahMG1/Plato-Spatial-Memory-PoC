@@ -1,5 +1,9 @@
+const qcStyles=document.createElement('link');qcStyles.rel='stylesheet';qcStyles.href='refinements.css';document.head.appendChild(qcStyles);
+const homeTab=document.querySelector('.topbar [data-tab="scene"]');if(homeTab)homeTab.textContent='Home';
+const recoverHero=document.querySelector('.hero-cta [data-tab="spatial"]');if(recoverHero)recoverHero.remove();
+const textIntro=document.querySelector('[data-panel="text"] .section-head > p');if(textIntro)textIntro.textContent="The Greek text is the fixed point. Context is not inserted into Plato's words; it is reconstructed around them.";
 const map=document.querySelector('#map');
-document.querySelectorAll('.steph button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.steph button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const d=sectionData[btn.dataset.sec];document.querySelector('#greek').textContent=d.g;document.querySelector('#explicitTitle').textContent=d.t;document.querySelector('#explicitBody').textContent=d.b;map.dataset.layer=d.layer;document.querySelectorAll('.layer-bar button').forEach(x=>x.classList.toggle('active',x.dataset.layer===d.layer));}));
+document.querySelectorAll('.steph button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.steph button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const d=sectionData[btn.dataset.sec];document.querySelector('#greek').textContent=d.g;document.querySelector('#explicitTitle').textContent=d.t;document.querySelector('#explicitBody').textContent=d.b;}));
 document.querySelectorAll('.layer-bar button').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.layer-bar button').forEach(x=>x.classList.remove('active'));btn.classList.add('active');map.dataset.layer=btn.dataset.layer;}));
 const recover={
 space:{tag:'Spatial analysis',h:'A named place is also a spatial relationship.',p:'Locate the Stoa within the Agora, then ask about approach, proximity, orientation, neighbouring structures, routes and visibility. The point is not simply to attach coordinates to Plato, but to recover the material configuration within which the encounter is staged.',gain:'Socrates’ presence becomes a displacement within a known civic landscape rather than a neutral stage direction.'},
@@ -17,7 +21,7 @@ function openTab(name,updateHash=true){
   tabButtons.forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
   document.documentElement.scrollTop=0; document.body.scrollTop=0;
   if(updateHash) history.replaceState(null,'','#'+name);
-  const names={scene:'Scene',text:'Text',spatial:'Spatial Analysis',archaeology:'Archaeology',memory:'Social Memory',interpretation:'What This Tells Us',references:'References'};
+  const names={scene:'Home',text:'Text',spatial:'Spatial Analysis',archaeology:'Archaeology',memory:'Social Memory',interpretation:'What This Tells Us',references:'References'};
   const kicker=document.querySelector('#tabKicker'); if(kicker) kicker.textContent=names[name]||name;
 }
 tabButtons.forEach(b=>b.addEventListener('click',()=>openTab(b.dataset.tab)));
