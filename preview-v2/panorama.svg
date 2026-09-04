@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2600 760" width="2600" height="760">
+<defs>
+ <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#789ba6"/><stop offset=".55" stop-color="#c8c6ae"/><stop offset="1" stop-color="#e3cda4"/></linearGradient>
+ <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bca47d"/><stop offset="1" stop-color="#8f795b"/></linearGradient>
+ <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e4d5b5"/><stop offset=".6" stop-color="#c9b38d"/><stop offset="1" stop-color="#aa9069"/></linearGradient>
+ <linearGradient id="roof" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a85f45"/><stop offset="1" stop-color="#794536"/></linearGradient>
+ <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+</defs>
+<rect width="2600" height="470" fill="url(#sky)"/>
+<path d="M0 370 C180 300 330 330 470 285 C660 220 815 320 990 260 C1170 195 1320 320 1470 255 C1650 190 1815 300 1990 248 C2180 190 2350 290 2600 225 L2600 500 L0 500 Z" fill="#7e846d" opacity=".52"/>
+<path d="M0 415 C260 375 450 405 690 360 C980 305 1160 410 1450 350 C1740 295 1940 400 2210 342 C2360 312 2480 330 2600 315 L2600 520 L0 520 Z" fill="#999379" opacity=".65"/>
+<rect y="455" width="2600" height="305" fill="url(#ground)"/>
+<path d="M0 610 C430 570 810 575 1180 603 C1580 634 2020 612 2600 560" fill="none" stroke="#d7c29a" stroke-width="125" opacity=".42"/>
+<path d="M0 603 C430 565 810 572 1180 600 C1580 630 2020 608 2600 555" fill="none" stroke="#8c7554" stroke-width="3" opacity=".45"/>
+<!-- Stoa Basileios -->
+<g transform="translate(770 330)">
+ <polygon points="0,95 80,20 620,20 700,95" fill="url(#roof)" stroke="#5d4536" stroke-width="5"/>
+ <rect x="25" y="95" width="650" height="38" fill="#8d684b"/>
+ <rect x="45" y="133" width="610" height="238" fill="#bfa77f" opacity=".25"/>
+ <g fill="url(#stone)" stroke="#7f6a50" stroke-width="2">
+  <rect x="72" y="128" width="30" height="230"/><rect x="142" y="128" width="30" height="230"/><rect x="212" y="128" width="30" height="230"/><rect x="282" y="128" width="30" height="230"/><rect x="352" y="128" width="30" height="230"/><rect x="422" y="128" width="30" height="230"/><rect x="492" y="128" width="30" height="230"/><rect x="562" y="128" width="30" height="230"/>
+ </g>
+ <rect x="45" y="356" width="610" height="25" fill="#9a825f"/>
+ <text x="350" y="410" text-anchor="middle" font-family="Georgia,serif" font-size="23" fill="#382f28">Stoa Basileios</text>
+</g>
+<!-- Stoa Zeus -->
+<g transform="translate(70 355) scale(.9)">
+ <polygon points="0,78 55,25 515,25 570,78" fill="#8c5a45" stroke="#5a4032" stroke-width="4"/>
+ <rect x="20" y="78" width="530" height="30" fill="#88694f"/>
+ <g fill="url(#stone)" stroke="#79664f" stroke-width="2">
+  <rect x="50" y="106" width="24" height="180"/><rect x="108" y="106" width="24" height="180"/><rect x="166" y="106" width="24" height="180"/><rect x="224" y="106" width="24" height="180"/><rect x="282" y="106" width="24" height="180"/><rect x="340" y="106" width="24" height="180"/><rect x="398" y="106" width="24" height="180"/><rect x="456" y="106" width="24" height="180"/>
+ </g>
+ <text x="285" y="320" text-anchor="middle" font-family="Georgia,serif" font-size="20" fill="#382f28">Stoa of Zeus Eleutherios</text>
+</g>
+<!-- painted/urban edge -->
+<g transform="translate(1760 340)">
+ <polygon points="0,80 90,18 570,18 650,80" fill="#9d6347" stroke="#5d4334" stroke-width="4"/>
+ <rect x="35" y="80" width="580" height="35" fill="#82654c"/>
+ <g fill="url(#stone)" opacity=".95"><rect x="65" y="112" width="26" height="205"/><rect x="130" y="112" width="26" height="205"/><rect x="195" y="112" width="26" height="205"/><rect x="260" y="112" width="26" height="205"/><rect x="325" y="112" width="26" height="205"/><rect x="390" y="112" width="26" height="205"/><rect x="455" y="112" width="26" height="205"/><rect x="520" y="112" width="26" height="205"/></g>
+</g>
+<!-- Herms -->
+<g stroke="#5f5040" stroke-width="3" fill="#b9a07b">
+ <g transform="translate(1510 470)"><rect x="0" y="58" width="28" height="105"/><rect x="-8" y="160" width="44" height="13"/><circle cx="14" cy="40" r="24"/><path d="M4 38 l10 12 11-12" fill="none"/></g>
+ <g transform="translate(1600 490) scale(.82)"><rect x="0" y="58" width="28" height="105"/><rect x="-8" y="160" width="44" height="13"/><circle cx="14" cy="40" r="24"/></g>
+ <g transform="translate(1695 475) scale(.92)"><rect x="0" y="58" width="28" height="105"/><rect x="-8" y="160" width="44" height="13"/><circle cx="14" cy="40" r="24"/></g>
+</g>
+<!-- shrine -->
+<g transform="translate(1880 505)"><rect x="0" y="45" width="150" height="72" fill="#b9a17c" stroke="#6c5a45" stroke-width="3"/><polygon points="-15,45 75,5 165,45" fill="#956249" stroke="#5d4435" stroke-width="3"/><rect x="64" y="67" width="24" height="50" fill="#6c5946"/></g>
+<!-- Eridanos -->
+<path d="M80 690 C420 640 620 666 920 720" fill="none" stroke="#5d7f88" stroke-width="22" opacity=".7"/><path d="M80 684 C420 636 620 660 920 714" fill="none" stroke="#9eb7b9" stroke-width="5" opacity=".72"/>
+<!-- people -->
+<g fill="#4d4034">
+ <g transform="translate(1410 565)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
+ <g transform="translate(1480 575) scale(.84)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
+ <g transform="translate(2150 590) scale(.72)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
+ <g transform="translate(2260 565) scale(.8)"><circle cx="0" cy="0" r="12"/><path d="M-12 17 Q0 5 12 17 L20 92 L-20 92 Z"/></g>
+</g>
+<!-- foreground texture -->
+<g fill="#695a49" opacity=".24"><circle cx="330" cy="700" r="6"/><circle cx="540" cy="650" r="5"/><circle cx="1160" cy="710" r="8"/><circle cx="1340" cy="670" r="5"/><circle cx="2010" cy="700" r="7"/><circle cx="2390" cy="640" r="5"/></g>
+</svg>
