@@ -1,0 +1,21 @@
+/* Version 7.1 finishing styles */
+.references .ref-group{position:relative;overflow:hidden;border:0!important;padding-top:30px!important;box-shadow:0 1px 0 rgba(16,33,31,.08)}
+.references .ref-group:before{content:'';position:absolute;left:0;right:0;top:0;height:8px;background:#81543f}
+.references .ref-primary{background:#f3eadc!important}.references .ref-primary:before{background:#81543f}
+.references .ref-archaeology{background:#e7eee8!important}.references .ref-archaeology:before{background:#41665f}
+.references .ref-memory{background:#eee5d9!important}.references .ref-memory:before{background:#9a6950}
+.references .ref-digital{background:#e5e8e2!important}.references .ref-digital:before{background:#66745f}
+.references .ref-ai{background:#e7e2eb!important}.references .ref-ai:before{background:#6f6079}
+.references .ref-group h3{color:#1f2b29!important;font-size:1.55rem;margin-top:0}
+.references .ref-item p{color:#3e4944!important}.references .ref-role{color:#70462f!important}
+.references .origin-card{background:#193a39!important;color:#f3eadc!important;border:0!important}.references .origin-card h3{color:#f3eadc!important}.references .origin-card p{color:#d5ded8!important}.references .origin-card .eyebrow{color:#d8b573!important}
+.references .ref-note{background:#f8f1e6!important}.references .ref-note h3{color:#1f2b29!important}.references .ref-note p{color:#4b5651!important}
+
+/* Narrative: preserve opening-page echo but give the approved image more room */
+.narrative-return-layout{grid-template-columns:minmax(0,.95fr) minmax(560px,1.2fr)!important}
+.narrative-visual-frame{height:820px!important;min-height:820px!important}
+.narrative-visual-frame img.narrative-approved-image{inset:72px 8px 126px 8px!important;width:calc(100% - 16px)!important;height:calc(100% - 198px)!important}
+.narrative-frame-note.narrative-return-lowered{bottom:10px!important;padding:16px 18px!important}
+.narrative-frame-note.narrative-return-lowered strong{font-size:1.45rem!important}.narrative-frame-note.narrative-return-lowered p{font-size:1rem!important;line-height:1.5!important}
+.narrative-shift-card p{font-size:1.03rem!important}.narrative-shift-card h3{font-size:1.58rem!important}
+@media(max-width:1050px){.narrative-return-layout{grid-template-columns:1fr!important}.narrative-visual-frame{height:690px!important;min-height:690px!important}}
