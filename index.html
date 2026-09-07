@@ -11,21 +11,40 @@
   </style>
 </head>
 <body>
-  <iframe id="app" src="preview-development-notes/index.html?v=7.1.8" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
+  <iframe id="app" src="preview-development-notes/index.html?v=7.1.9" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
   <script>
     const app=document.getElementById('app');
+    const reconstructionURL=new URL('preview-interactive/index.html?v=7.1.9', window.location.href).href;
+
     app.addEventListener('load', function () {
       const doc=this.contentDocument;
       if (!doc) return;
 
-      // Local file servers do not always resolve directory URLs to index.html.
-      // Force the reconstruction iframe to its actual entry file.
+      function pinReconstruction(){
+        const recon=doc.querySelector('.recon-frame');
+        if(!recon) return;
+        if(recon.src!==reconstructionURL) recon.src=reconstructionURL;
+      }
+
+      // Use the actual file, not a directory URL. This works for GitHub Pages,
+      // local HTTP servers and file:// previews.
+      pinReconstruction();
+
+      // Re-assert when the Reconstruction tab is opened in case another runtime
+      // has rewritten the iframe source during page initialisation.
+      doc.querySelectorAll('[data-tab="reconstruction"]').forEach(btn=>{
+        btn.addEventListener('click',()=>setTimeout(pinReconstruction,0));
+      });
+
+      // Guard against later source rewrites without polling.
       const recon=doc.querySelector('.recon-frame');
-      if(recon) recon.setAttribute('src','../preview-interactive/index.html?v=7.1.8');
+      if(recon){
+        new MutationObserver(pinReconstruction).observe(recon,{attributes:true,attributeFilter:['src']});
+      }
 
       if (!doc.querySelector('script[data-v71-fallback]')) {
         const fallback=doc.createElement('script');
-        fallback.src='../v71-fallback.js?v=7.1.8';
+        fallback.src='../v71-fallback.js?v=7.1.9';
         fallback.dataset.v71Fallback='true';
         doc.body.appendChild(fallback);
       }
@@ -34,13 +53,14 @@
         const existing=doc.querySelector('script[data-narrative-override]');
         if(existing) existing.remove();
         const narrative=doc.createElement('script');
-        narrative.src='../narrative-override.js?v=7.1.8';
+        narrative.src='../narrative-override.js?v=7.1.9';
         narrative.dataset.narrativeOverride='true';
         doc.body.appendChild(narrative);
       }
 
       setTimeout(loadNarrativeOverride,350);
       setTimeout(loadNarrativeOverride,1200);
+      setTimeout(pinReconstruction,1300);
     });
   </script>
 </body>
