@@ -11,16 +11,21 @@
   </style>
 </head>
 <body>
-  <iframe id="app" src="preview-development-notes/index.html?v=7.1.7" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
+  <iframe id="app" src="preview-development-notes/index.html?v=7.1.8" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
   <script>
     const app=document.getElementById('app');
     app.addEventListener('load', function () {
       const doc=this.contentDocument;
       if (!doc) return;
 
+      // Local file servers do not always resolve directory URLs to index.html.
+      // Force the reconstruction iframe to its actual entry file.
+      const recon=doc.querySelector('.recon-frame');
+      if(recon) recon.setAttribute('src','../preview-interactive/index.html?v=7.1.8');
+
       if (!doc.querySelector('script[data-v71-fallback]')) {
         const fallback=doc.createElement('script');
-        fallback.src='../v71-fallback.js?v=7.1.7';
+        fallback.src='../v71-fallback.js?v=7.1.8';
         fallback.dataset.v71Fallback='true';
         doc.body.appendChild(fallback);
       }
@@ -29,14 +34,12 @@
         const existing=doc.querySelector('script[data-narrative-override]');
         if(existing) existing.remove();
         const narrative=doc.createElement('script');
-        narrative.src='../narrative-override.js?v=7.1.7';
+        narrative.src='../narrative-override.js?v=7.1.8';
         narrative.dataset.narrativeOverride='true';
         doc.body.appendChild(narrative);
       }
 
-      // Run after the page's own review/runtime scripts have finished transforming the panel.
       setTimeout(loadNarrativeOverride,350);
-      // One defensive second pass prevents an older async runtime from restoring the superseded diagram.
       setTimeout(loadNarrativeOverride,1200);
     });
   </script>
