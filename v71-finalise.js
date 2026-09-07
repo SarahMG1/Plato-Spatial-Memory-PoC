@@ -53,8 +53,13 @@ function finaliseSpatial(){
 function finaliseReconstruction(){
   const panel=document.querySelector('[data-panel="reconstruction"]');
   if(!panel)return;
-  const h2=panel.querySelector('.section-head h2'); if(h2)h2.textContent='Reconstruct the encounter';
-  const p=panel.querySelector('.section-head p'); if(p)p.remove();
+  const head=panel.querySelector('.section-head');
+  if(!head)return;
+  const h2=head.querySelector('h2');
+  if(h2)h2.textContent='Reconstruct the encounter';
+  let p=head.querySelector('p');
+  if(!p){p=document.createElement('p');head.appendChild(p);}
+  p.textContent='Use archaeological, spatial and contextual evidence to reconstruct the encounter zone as an interpretative environment, without claiming exact recovery of the scene.';
 }
 
 function finaliseSocialMemory(){
