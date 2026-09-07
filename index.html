@@ -11,10 +11,10 @@
   </style>
 </head>
 <body>
-  <iframe id="app" src="preview-development-notes/index.html?v=7.1.10" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
+  <iframe id="app" src="preview-development-notes/index.html?v=7.1.11" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
   <script>
     const app=document.getElementById('app');
-    const reconstructionURL=new URL('preview-interactive/index.html?v=7.1.10', window.location.href).href;
+    const reconstructionURL=new URL('preview-interactive/index.html?v=7.1.11', window.location.href).href;
 
     app.addEventListener('load', function () {
       const doc=this.contentDocument;
@@ -26,7 +26,17 @@
         if(recon.src!==reconstructionURL) recon.src=reconstructionURL;
       }
 
+      function ensureFinalCSS(){
+        if(doc.querySelector('link[data-v71-final-css]'))return;
+        const link=doc.createElement('link');
+        link.rel='stylesheet';
+        link.href='../v71-finalise.css?v=7.1.11';
+        link.dataset.v71FinalCss='true';
+        doc.head.appendChild(link);
+      }
+
       pinReconstruction();
+      ensureFinalCSS();
       doc.querySelectorAll('[data-tab="reconstruction"]').forEach(btn=>{
         btn.addEventListener('click',()=>setTimeout(pinReconstruction,0));
       });
@@ -37,7 +47,7 @@
 
       if (!doc.querySelector('script[data-v71-fallback]')) {
         const fallback=doc.createElement('script');
-        fallback.src='../v71-fallback.js?v=7.1.10';
+        fallback.src='../v71-fallback.js?v=7.1.11';
         fallback.dataset.v71Fallback='true';
         doc.body.appendChild(fallback);
       }
@@ -46,7 +56,7 @@
         const existing=doc.querySelector('script[data-narrative-override]');
         if(existing) existing.remove();
         const narrative=doc.createElement('script');
-        narrative.src='../narrative-override.js?v=7.1.10';
+        narrative.src='../narrative-override.js?v=7.1.11';
         narrative.dataset.narrativeOverride='true';
         doc.body.appendChild(narrative);
       }
@@ -55,7 +65,7 @@
         const existing=doc.querySelector('script[data-v71-finalise]');
         if(existing) existing.remove();
         const finalise=doc.createElement('script');
-        finalise.src='../v71-finalise.js?v=7.1.10';
+        finalise.src='../v71-finalise.js?v=7.1.11';
         finalise.dataset.v71Finalise='true';
         doc.body.appendChild(finalise);
       }
