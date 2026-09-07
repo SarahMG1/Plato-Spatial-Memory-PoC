@@ -53,7 +53,7 @@ function finaliseSpatial(){
 function finaliseReconstruction(){
   const panel=document.querySelector('[data-panel="reconstruction"]');
   if(!panel)return;
-  const h2=panel.querySelector('.section-head h2'); if(h2)h2.textContent='Enter the encounter zone';
+  const h2=panel.querySelector('.section-head h2'); if(h2)h2.textContent='Reconstruct the encounter';
   const p=panel.querySelector('.section-head p'); if(p)p.remove();
 }
 
