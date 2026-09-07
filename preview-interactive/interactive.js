@@ -18,10 +18,11 @@ const evidence={
 };
 let currentView='approach';
 const img=document.querySelector('#sceneImage'),overlay=document.querySelector('#evidenceOverlay'),record=document.querySelector('#record'),viewName=document.querySelector('#viewName');
+function syncHost(){try{if(window.parent===window)return;const host=window.parent.document.querySelector('[data-panel="reconstruction"]');if(!host)return;const h2=host.querySelector('.section-head h2');if(h2)h2.textContent='Enter the encounter zone';const p=host.querySelector('.section-head p');if(p)p.remove();}catch(e){}}
 function resetRecord(){record.innerHTML='<div class="eyebrow">Evidence record</div><h2>Select a numbered feature</h2><p>Select a numbered point on the reconstruction to inspect its evidence status, uncertainty and potential significance.</p>'}
 function renderOverlay(){overlay.innerHTML='';views[currentView].features.forEach(([id,x,y,num])=>{const d=evidence[id];const b=document.createElement('button');b.type='button';b.className=`ir-hotspot ${d.status}`;b.style.left=`${x}%`;b.style.top=`${y}%`;b.dataset.id=id;b.setAttribute('aria-label',`${num}. ${d.title}`);b.innerHTML=`<span class="sr-only">${num}. ${d.title}</span>`;b.addEventListener('click',()=>selectFeature(id,b));overlay.appendChild(b)})}
 function selectFeature(id,node){document.querySelectorAll('.ir-hotspot').forEach(n=>n.classList.remove('selected'));if(node)node.classList.add('selected');const d=evidence[id];record.innerHTML=`<div class="eyebrow">Evidence record · ${d.statusLabel}</div><h2>${d.title}</h2><p>${d.text}</p><div class="ir-meta"><div><span>Textual relation</span><strong>${d.relation}</strong></div><div><span>Uncertainty</span><strong>${d.confidence}</strong></div></div>`}
 function setView(id){if(!views[id])return;currentView=id;document.querySelectorAll('#viewTabs button').forEach(b=>b.classList.toggle('active',b.dataset.view===id));img.onload=()=>renderOverlay();img.src=views[id].src;viewName.textContent=views[id].label;resetRecord();if(img.complete)renderOverlay()}
 document.querySelectorAll('#viewTabs button').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
-setView('approach');
+syncHost();setView('approach');
 })();
