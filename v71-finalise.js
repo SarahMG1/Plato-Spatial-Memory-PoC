@@ -31,7 +31,6 @@ function finaliseReferences(){
     </article>
     <article class="ref-group ref-memory"><h3>Social & collective memory</h3>
       <div class="ref-item"><p>Steinbock, B. (2012) <i>Social Memory in Athenian Public Discourse: Uses and Meanings of the Past</i>. Ann Arbor, MI: University of Michigan Press. doi:10.3998/mpub.1897162.</p></div>
-      <div class="ref-item"><p>Burke, S. (now Sarah Machir-Grant) (2019) <i>Plato’s Euthyphro and Phaedrus Dialogues: Inconsistent Gods</i>. MA dissertation. The Open University.</p></div>
     </article>
     <article class="ref-group ref-digital"><h3>Spatial & digital humanities</h3>
       <div class="ref-item"><p>HESTIA (n.d.) <i>Hestia: geospatial analysis of Herodotus’s Histories</i>. The Open University. Available at: https://hestia.open.ac.uk/.</p></div>
@@ -69,6 +68,24 @@ function finaliseSocialMemory(){
   if(h2)h2.textContent='Contextualise the conversation';
   const p=panel.querySelector('.section-head p');
   if(p)p.textContent='The material landscape is only one layer of the encounter. Places, people and objects can also carry reputations, institutional associations and remembered civic narratives. The question is not what any particular receiver thought, but what kinds of cultural knowledge and associations may have been available to individuals who encountered Plato’s work.';
+
+  const scenes=[...panel.querySelectorAll('.memory-scene')];
+  const imageData=[
+    {src:'images/social memory/socrates-euthyphro.png',alt:'AI-generated interpretative reconstruction of Socrates and Euthyphro in the northwest Agora encounter zone'},
+    {src:'images/social memory/stoa-basileios-memory.png',alt:'AI-generated interpretative reconstruction of the Stoa Basileios as a legal and religious institutional setting'},
+    {src:'images/social memory/herms-memory.png',alt:'AI-generated interpretative reconstruction of herms in the northwest Agora as material carriers of civic memory'},
+    {src:'images/social memory/zeus-eleutherios-memory.png',alt:'AI-generated interpretative reconstruction of the Stoa of Zeus Eleutherios and its spatial relationship to the encounter zone'}
+  ];
+  const caution='AI-generated interpretative image based on archaeological, spatial and contextual evidence. This image is illustrative and does not claim exact historical recovery.';
+  scenes.slice(0,4).forEach((scene,i)=>{
+    const visual=scene.querySelector('.memory-visual');
+    if(!visual)return;
+    const img=visual.querySelector('img');
+    if(img){img.src=imageData[i].src;img.alt=imageData[i].alt;}
+    let note=visual.querySelector('span');
+    if(!note){note=document.createElement('span');visual.appendChild(note);}
+    note.textContent=caution;
+  });
 }
 
 function finaliseNarrative(){
