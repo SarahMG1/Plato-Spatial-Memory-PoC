@@ -15,11 +15,21 @@
   <script>
     document.getElementById('app').addEventListener('load', function () {
       const doc = this.contentDocument;
-      if (!doc || doc.querySelector('script[data-v71-fallback]')) return;
-      const s = doc.createElement('script');
-      s.src = '../v71-fallback.js';
-      s.dataset.v71Fallback = 'true';
-      doc.body.appendChild(s);
+      if (!doc) return;
+
+      if (!doc.querySelector('script[data-v71-fallback]')) {
+        const fallback = doc.createElement('script');
+        fallback.src = '../v71-fallback.js';
+        fallback.dataset.v71Fallback = 'true';
+        doc.body.appendChild(fallback);
+      }
+
+      if (!doc.querySelector('script[data-narrative-override]')) {
+        const narrative = doc.createElement('script');
+        narrative.src = '../narrative-override.js?v=7.1.6';
+        narrative.dataset.narrativeOverride = 'true';
+        doc.body.appendChild(narrative);
+      }
     });
   </script>
 </body>
