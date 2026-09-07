@@ -11,6 +11,16 @@
   </style>
 </head>
 <body>
-  <iframe src="preview-development-notes/index.html" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
+  <iframe id="app" src="preview-development-notes/index.html" title="Euthyphro Spatial Memory PoC — Version 7.1"></iframe>
+  <script>
+    document.getElementById('app').addEventListener('load', function () {
+      const doc = this.contentDocument;
+      if (!doc || doc.querySelector('script[data-v71-fallback]')) return;
+      const s = doc.createElement('script');
+      s.src = '../v71-fallback.js';
+      s.dataset.v71Fallback = 'true';
+      doc.body.appendChild(s);
+    });
+  </script>
 </body>
 </html>
