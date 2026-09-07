@@ -66,14 +66,23 @@ function transformNarrative(){
   document.head.appendChild(style);}
 }
 
+function transformReconstruction(){
+  const panel=document.querySelector('[data-panel="reconstruction"]');
+  if(!panel)return;
+  const h2=panel.querySelector('.section-head h2');
+  if(h2)h2.textContent='Enter the encounter zone';
+  const tagline=panel.querySelector('.section-head p');
+  if(tagline)tagline.remove();
+}
+
 function fixReconstructionEntryPoint(){
   const recon=document.querySelector('.recon-frame');
   if(recon){
-    const target='../preview-interactive/index.html?v=7.1.8';
+    const target='../preview-interactive/index.html?v=7.1.9';
     if(!recon.getAttribute('src')||!recon.getAttribute('src').includes('index.html')) recon.setAttribute('src',target);
   }
 }
 
-ensureEvidenceReferences();transformSocialMemory();transformNarrative();fixReconstructionEntryPoint();
-const s=document.createElement('script');s.src='../v71-fallback.js?v=7.1.8';s.onload=()=>{console.info('V7.1 runtime loaded');fixReconstructionEntryPoint();};s.onerror=()=>console.error('V7.1 runtime failed to load');document.body.appendChild(s);
+ensureEvidenceReferences();transformSocialMemory();transformNarrative();transformReconstruction();fixReconstructionEntryPoint();
+const s=document.createElement('script');s.src='../v71-fallback.js?v=7.1.9';s.onload=()=>{console.info('V7.1 runtime loaded');transformReconstruction();fixReconstructionEntryPoint();};s.onerror=()=>console.error('V7.1 runtime failed to load');document.body.appendChild(s);
 })();
