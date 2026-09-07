@@ -43,6 +43,13 @@ function finaliseReferences(){
     </article>`;
 }
 
+function finaliseSpatial(){
+  const panel=document.querySelector('[data-panel="spatial"]');
+  if(!panel)return;
+  const h2=panel.querySelector('.section-head h2');
+  if(h2)h2.textContent='Interrogate the Landscape';
+}
+
 function finaliseReconstruction(){
   const panel=document.querySelector('[data-panel="reconstruction"]');
   if(!panel)return;
@@ -78,7 +85,7 @@ function applyInlineHarvard(){
   });
 }
 
-function run(){finaliseReferences();finaliseReconstruction();finaliseNarrative();applyInlineHarvard();}
+function run(){finaliseReferences();finaliseSpatial();finaliseReconstruction();finaliseNarrative();applyInlineHarvard();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 setTimeout(run,500);
 })();
