@@ -78,11 +78,13 @@ function transformReconstruction(){
 function fixReconstructionEntryPoint(){
   const recon=document.querySelector('.recon-frame');
   if(recon){
-    const target='../preview-interactive/index.html?v=7.1.9';
+    const target='../preview-interactive/index.html?v=7.1.11';
     if(!recon.getAttribute('src')||!recon.getAttribute('src').includes('index.html')) recon.setAttribute('src',target);
   }
 }
 
 ensureEvidenceReferences();transformSocialMemory();transformNarrative();transformReconstruction();fixReconstructionEntryPoint();
-const s=document.createElement('script');s.src='../v71-fallback.js?v=7.1.9';s.onload=()=>{console.info('V7.1 runtime loaded');transformReconstruction();fixReconstructionEntryPoint();};s.onerror=()=>console.error('V7.1 runtime failed to load');document.body.appendChild(s);
+const s=document.createElement('script');s.src='../v71-fallback.js?v=7.1.11';s.onload=()=>{console.info('V7.1 runtime loaded');transformReconstruction();fixReconstructionEntryPoint();};s.onerror=()=>console.error('V7.1 runtime failed to load');document.body.appendChild(s);
+if(!document.querySelector('link[data-v71-finalise-css]')){const css=document.createElement('link');css.rel='stylesheet';css.href='../v71-finalise.css?v=7.1.11';css.dataset.v71FinaliseCss='true';document.head.appendChild(css);}
+if(!document.querySelector('script[data-v71-finalise-direct]')){const fin=document.createElement('script');fin.src='../v71-finalise.js?v=7.1.11';fin.dataset.v71FinaliseDirect='true';document.body.appendChild(fin);}
 })();
