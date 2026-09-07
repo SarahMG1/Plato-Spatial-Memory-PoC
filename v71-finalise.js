@@ -5,20 +5,21 @@ function finaliseReferences(){
   if(!panel)return;
   const head=panel.querySelector('.section-head');
   if(head){
+    const h2=head.querySelector('h2');
+    if(h2)h2.textContent='References';
     const p=head.querySelector('p');
-    if(p)p.textContent='References are presented in Harvard style. Ancient texts retain conventional work and passage references; archaeological, spatial and modern scholarship are cited by author or institution and date.';
+    if(p)p.remove();
   }
   const intro=panel.querySelector('.reference-intro');
   if(intro)intro.innerHTML=`
-    <article class="origin-card"><div class="eyebrow">Research origin · 2019</div><h3>Burke, S. (now Sarah Machir-Grant)</h3><p><i>Plato’s Euthyphro and Phaedrus Dialogues: Inconsistent Gods</i>. MA dissertation, The Open University. The dissertation was submitted under the researcher’s former name, Sarah Burke.</p></article>
-    <article class="ref-note"><div class="eyebrow">Referencing convention</div><h3>Harvard style & provenance</h3><p>Modern scholarship is cited author–date. Ancient sources are cited by author, work and conventional passage number. Digital and archaeological resources include the responsible institution and access route where relevant.</p></article>`;
+    <article class="origin-card"><div class="eyebrow">Research origin · 2019</div><h3>Burke, S. (now Sarah Machir-Grant)</h3><p><i>Plato’s Euthyphro and Phaedrus Dialogues: Inconsistent Gods</i>. MA dissertation, The Open University. The dissertation was submitted under the researcher’s former name, Sarah Burke.</p></article>`;
   const groups=panel.querySelector('.ref-groups');
   if(!groups)return;
   groups.innerHTML=`
     <article class="ref-group ref-primary"><h3>Primary text & ancient sources</h3>
       <div class="ref-item"><span class="ref-role">Canonical Greek text</span><p>Plato (1900) <i>Platonis Opera</i>, Vol. I. Edited by J. Burnet. Oxford: Clarendon Press. <i>Euthyphro</i> 2a–5a.</p></div>
-      <div class="ref-item"><p>Plato, <i>Apology</i>.</p></div>
-      <div class="ref-item"><p>Aristophanes, <i>Clouds</i>.</p></div>
+      <div class="ref-item"><p>Plato (1900) <i>Apologia Socratis</i>, in Burnet, J. (ed.) <i>Platonis Opera</i>, Vol. I. Oxford: Clarendon Press, pp. 17–42.</p></div>
+      <div class="ref-item"><p>Aristophanes (1968) <i>Clouds</i>. Edited with introduction and commentary by K.J. Dover. Oxford: Clarendon Press.</p></div>
       <div class="ref-item"><p>Thucydides, <i>History of the Peloponnesian War</i>, 6.27–29.</p></div>
     </article>
     <article class="ref-group ref-archaeology"><h3>Archaeology & topography</h3>
