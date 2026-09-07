@@ -57,6 +57,15 @@ function finaliseReconstruction(){
   const p=panel.querySelector('.section-head p'); if(p)p.remove();
 }
 
+function finaliseSocialMemory(){
+  const panel=document.querySelector('[data-panel="memory"]');
+  if(!panel)return;
+  const h2=panel.querySelector('.section-head h2');
+  if(h2)h2.textContent='Contextualise the conversation';
+  const p=panel.querySelector('.section-head p');
+  if(p)p.textContent='The material landscape is only one layer of the encounter. Places, people and objects can also carry reputations, institutional associations and remembered civic narratives. The question is not what any particular receiver thought, but what kinds of cultural knowledge and associations may have been available to individuals who encountered Plato’s work.';
+}
+
 function finaliseNarrative(){
   const panel=document.querySelector('[data-panel="reading"]');
   if(!panel)return;
@@ -85,7 +94,7 @@ function applyInlineHarvard(){
   });
 }
 
-function run(){finaliseReferences();finaliseSpatial();finaliseReconstruction();finaliseNarrative();applyInlineHarvard();}
+function run(){finaliseReferences();finaliseSpatial();finaliseReconstruction();finaliseSocialMemory();finaliseNarrative();applyInlineHarvard();}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',run);else run();
 setTimeout(run,500);
 })();
